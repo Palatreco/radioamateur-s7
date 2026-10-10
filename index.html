@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Deviens Radioamateur - Session 7</title>
+
+<style>
+:root{
+--r:clamp(280px,60vw,500px);
+--h:clamp(70px,12vw,110px);
+--b:clamp(10px,5%,22px);
+}
+body{
+font-family:Arial,sans-serif;
+background:#0f172a;
+color:#fff;
+text-align:center;
+margin:20px;
+}
+.container{
+display:flex;
+flex-wrap:wrap;
+gap:20px;
+justify-content:center;
+align-items:flex-start;
+}
+.panel{
+background:#1e293b;
+padding:15px;
+border-radius:12px;
+max-width:320px;
+text-align:left;
+}
+.resistance{
+width:var(--r);
+height:var(--h);
+background:#D2B48C;
+border-radius:999px;
+position:relative;
+margin:auto;
+}
+.band{
+position:absolute;
+width:var(--b);
+height:100%;
+}
+#b1{left:18%}
+#b2{left:30%}
+#b3{left:42%}
+#b4{left:58%}
+#b5{left:75%}
+button,input,select{
+padding:10px;
+margin:5px;
+border-radius:8px;
+}
+.memo{
+padding:5px;
+margin:3px 0;
+border-radius:4px;
+font-weight:bold;
+}
+</style>
+</head>
+
+<body>
+
+<select id="langue" onchange="lang()">
+<option value="fr">🇫🇷 Français</option>
+<option value="ca">🏴 Català</option>
+</select>
+
+<h1 id="titre"></h1>
+<h3 id="sous"></h3>
+
+<p id="mention"></p>
+
+<label>
+<input type="checkbox" id="mode5"
+onchange="nouvelle()">
+5 bandes
+</label>
+
+<div class="container">
+
+<div>
+
+<div class="resistance">
+
+<div id="b1" class="band"></div>
+<div id="b2" class="band"></div>
+<div id="b3" class="band"></div>
+<div id="b4" class="band"></div>
+<div id="b5" class="band"></div>
+
+</div>
+
+<p id="question"></p>
+
+<input id="rep" type="number">
+
+<br>
+
+<button onclick="verifier()">
+✅ Vérifier
+</button>
+
+<button onclick="nouvelle()">
+🔄 Nouvelle
+</button>
+
+<div id="message"></div>
+<div id="score"></div>
+
+</div>
+
+<div class="panel">
+
+<h3>📚 Aide mémoire</h3>
+
+<div id="memo"></div>
+
+<hr>
+
+<h4>Multiplicateurs</h4>
+
+<div>
+×1 Noir<br>
+×10 Marron<br>
+×100 Rouge<br>
+×1k Orange<br>
+×10k Jaune<br>
+×100k Vert<br>
+×1M Bleu<br>
+×10M Violet<br>
+×100M Gris<br>
+×1G Blanc<br>
+×0.1 Or<br>
+×0.01 Argent
+</div>
+
+<hr>
+
+<label>
+<input type="checkbox"
+id="tolAdv"
+onchange="majTol()">
+Tolérances avancées
+</label>
+
+<div id="tol"></div>
+
+</div>
+
+</div>
+
+<script>
+
+const C=[
+["Noir","Negre","black",0],
+["Marron","Marró","#8B4513",1],
+["Rouge","Vermell","red",2],
+["Orange","Taronja","orange",3],
+["Jaune","Groc","yellow",4],
+["Vert","Verd","green",5],
+["Bleu","Blau","blue",6],
+["Violet","Violeta","violet",7],
+["Gris","Gris","gray",8],
+["Blanc","Blanc","white",9]
+];
+
+const T={
+fr:{
+titre:"📻 Deviens Radioamateur - Session 7",
+sous:"Codes couleurs des résistances",
+mention:"Application d'entraînement non officielle créée par un participant de la Session 7.",
+question:"Valeur de la résistance ?",
+score:"Score"
+},
+ca:{
+titre:"📻 Esdevé Radioaficionat - Sessió 7",
+sous:"Codis de colors de les resistències",
+mention:"Aplicació d'entrenament no oficial creada per un participant de la Sessió 7.",
+question:"Valor de la resistència?",
+score:"Puntuació"
+}
+};
+
+let langue="fr";
+let valeur=0;
+let bons=0;
+let total=0;
+
+function lang(){
+
+langue=
+document.getElementById("langue").value;
+
+const L=T[langue];
+
+titre.textContent=L.titre;
+sous.textContent=L.sous;
+mention.textContent=L.mention;
+question.textContent=L.question;
+
+memo.innerHTML="";
+
+C.forEach(c=>{
+
+memo.innerHTML+=
+`<div class="memo"
+style="background:${c[2]};color:${c[0]=="Jaune"||c[0]=="Blanc"||c[0]=="Orange"?"black":"white"}">
+${langue=="fr"?cc[1]}
+ = ${c[3]}
+</div>`;
+
+});
+
+majTol();
+}
+
+function majTol(){
+
+tol.innerHTML=
+`
+⭐ Or = ±5%<br>
+⚪ Argent = ±10%<br>
+🚫 Sans bande = ±20%
+`;
+
+if(tolAdv.checked){
+
+tol.innerHTML+=`
+<hr>
+🟤 ±1%<br>
+🔴 ±2%<br>
+🟢 ±0.5%<br>
+🔵 ±0.25%<br>
+🟣 ±0.1%<br>
+⚪ ±0.05%
+`;
+}
+}
+
+function nouvelle(){
+
+const mode5=
+document.getElementById("mode5").checked;
+
+if(mode5){
+
+let a=Math.floor(Math.random()*9)+1;
+let b=Math.floor(Math.random()*10);
+let c=Math.floor(Math.random()*10);
+let m=Math.floor(Math.random()*7);
+
+valeur=
+(a*100+b*10+c)
+*Math.pow(10,m);
+
+b1.style.background=C[a][2];
+b2.style.background=C[b][2];
+b3.style.background=C[c][2];
+b4.style.background=C[m][2];
+b5.style.background="gold";
+
+b3.style.display="block";
+
+}else{
+
+let a=Math.floor(Math.random()*9)+1;
+let b=Math.floor(Math.random()*10);
+let m=Math.floor(Math.random()*7);
+
+valeur=
+(a*10+b)
+*Math.pow(10,m);
+
+b1.style.background=C[a][2];
+b2.style.background=C[b][2];
+
+b3.style.display="none";
+
+b4.style.background=C[m][2];
+b5.style.background="gold";
+}
+
+rep.value="";
+message.textContent="";
+}
+
+function format(v){
+
+if(v>=1000000) return (v/1000000)+" MΩ";
+if(v>=1000) return (v/1000)+" kΩ";
+
+return v+" Ω";
+}
+
+function verifier(){
+
+let r=parseInt(rep.value);
+
+if(isNaN(r)) return;
+
+total++;
+
+if(r===valeur){
+
+bons++;
+
+message.style.color="lime";
+message.textContent=
+"✅ "+format(valeur);
+
+}else{
+
+message.style.color="#ff6b6b";
+message.textContent=
+"❌ "+format(valeur);
+}
+
+score.textContent=
+T[langue].score+
+" : "+
+bons+
+" / "+
+total;
+}
+
+lang();
+nouvelle();
+
+</script>
+
+</body>
+</html>
