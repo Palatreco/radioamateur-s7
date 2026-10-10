@@ -64,9 +64,38 @@ font-weight:bold;
 </style>
 </head>
 
+ <script>
+const textes = {
+    fr: {
+        titre: "Deviens Radioamateur - Session 7",
+        sous: "Apprentissage des codes couleurs des résistances",
+        mention: "Application non officielle"
+    },
+    ca: {
+        titre: "Fes-te Radioaficionat - Sessió 7",
+        sous: "Aprenentatge dels codis de colors de les resistències",
+        mention: "Aplicació no oficial"
+    }
+};
+
+function changerLangue() {
+    const langue = document.getElementById("langue").value;
+
+    document.getElementById("titre").textContent =
+        textes[langue].titre;
+
+    document.getElementById("sous").textContent =
+        textes[langue].sous;
+
+    document.getElementById("mention").textContent =
+        textes[langue].mention;
+}
+
+window.onload = changerLangue;
+</script>
 <body>
 
-<select id="langue" onchange="lang()">
+<select id="langue" onchange="changerLangue()">
 <option value="fr">🇫🇷 Français</option>
 <option value="ca">🏴 Català</option>
 </select>
