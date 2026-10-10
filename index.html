@@ -218,6 +218,7 @@ ${langue=="fr"?c[0]:c[1]}
 });
 
 majTol();
+localStorage.setItem("langue", langue);
 }
 
 function majTol(){
@@ -327,6 +328,14 @@ T[langue].score+
 bons+
 " / "+
 total;
+}
+
+const sauvegarde =
+    localStorage.getItem("langue");
+
+if(sauvegarde){
+    document.getElementById("langue").value =
+        sauvegarde;
 }
 
 lang();
