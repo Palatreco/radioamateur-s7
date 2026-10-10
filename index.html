@@ -211,7 +211,7 @@ C.forEach(c=>{
 memo.innerHTML+=
 `<div class="memo"
 style="background:${c[2]};color:${c[0]=="Jaune"||c[0]=="Blanc"||c[0]=="Orange"?"black":"white"}">
-${langue=="fr"?cc[1]}
+${langue=="fr"?c[0]:c[1]}
  = ${c[3]}
 </div>`;
 
