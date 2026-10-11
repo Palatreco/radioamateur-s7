@@ -100,10 +100,34 @@ window.onload = changerLangue;
 <option value="ca">🏴 Català</option>
 </select>
 
-<h1 id="titre"></h1>
-<h3 id="sous"></h3>
+<div style="
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+margin-bottom:10px;
+">
 
-<p id="mention"></p>
+<div style="text-align:left">
+
+<h2 id="titre" style="margin:0"></h2>
+
+<p id="sous"
+style="
+margin:2px 0;
+font-size:0.9rem;">
+</p>
+
+</div>
+
+<p id="mention"
+style="
+font-size:0.8rem;
+color:#94a3b8;
+margin:0">
+</p>
+
+</div>
 
 <label>
 <input type="checkbox" id="mode5"
@@ -144,7 +168,7 @@ onchange="nouvelle()">
 
 </div>
 
-<div class="panel">
+<div class="panel" id="zoneAide">
 
 <h3>📚 Aide mémoire</h3>
 
@@ -358,7 +382,24 @@ bons+
 " / "+
 total;
 }
+function changerMode(){
 
+    const mode =
+        document.getElementById("mode").value;
+
+    const aide =
+        document.getElementById("zoneAide");
+
+    if(mode === "examen"){
+        aide.style.display = "none";
+    }
+    else{
+        aide.style.display = "block";
+    }
+
+    localStorage.setItem("mode",mode);
+
+}
 const sauvegarde =
     localStorage.getItem("langue");
 
@@ -366,7 +407,15 @@ if(sauvegarde){
     document.getElementById("langue").value =
         sauvegarde;
 }
+const modeSauvegarde =
+    localStorage.getItem("mode");
 
+if(modeSauvegarde){
+    document.getElementById("mode").value =
+        modeSauvegarde;
+}
+
+changerMode();
 lang();
 nouvelle();
 
