@@ -44,7 +44,10 @@ margin:auto;
 position:absolute;
 width:var(--b);
 height:100%;
+border-left:1px solid rgba(0,0,0,.3);
+border-right:1px solid rgba(0,0,0,.3);
 }
+
 #b1{left:18%}
 #b2{left:30%}
 #b3{left:42%}
@@ -65,33 +68,8 @@ font-weight:bold;
 </head>
 
  <script>
-const textes = {
-    fr: {
-        titre: "Deviens Radioamateur - Session 7",
-        sous: "Apprentissage des codes couleurs des résistances",
-        mention: "Application non officielle"
-    },
-    ca: {
-        titre: "Fes-te Radioaficionat - Sessió 7",
-        sous: "Aprenentatge dels codis de colors de les resistències",
-        mention: "Aplicació no oficial"
-    }
-};
 
-function changerLangue() {
-    const langue = document.getElementById("langue").value;
 
-    document.getElementById("titre").textContent =
-        textes[langue].titre;
-
-    document.getElementById("sous").textContent =
-        textes[langue].sous;
-
-    document.getElementById("mention").textContent =
-        textes[langue].mention;
-}
-
-window.onload = changerLangue;
 </script>
 <body>
 
@@ -135,7 +113,7 @@ Application d'entraînement non officielle
 </p>
 
 </div>
-
+</div>
 <label>
 <input type="checkbox" id="mode5"
 onchange="nouvelle()">
@@ -159,6 +137,10 @@ onchange="nouvelle()">
 <p id="question"></p>
 
 <input id="rep" type="number">
+ <input
+id="rep"
+type="number"
+placeholder="Exemple : 4700">
 
 <br>
 
@@ -231,24 +213,6 @@ const C=[
 ["Gris","Gris","gray",8],
 ["Blanc","Blanc","white",9]
 ];
-
-const T={
-fr:{
-titre:"📻 Deviens Radioamateur - Session 7",
-sous:"Codes couleurs des résistances",
-mention:"Application d'entraînement non officielle créée par un participant de la Session 7.",
-question:"Valeur de la résistance ?",
-score:"Score"
-},
-ca:{
-titre:"📻 Esdevé Radioaficionat - Sessió 7",
-sous:"Codis de colors de les resistències",
-mention:"Aplicació d'entrenament no oficial creada per un participant de la Sessió 7.",
-question:"Valor de la resistència?",
-score:"Puntuació"
-}
-};
-
 
 let valeur=0;
 let bons=0;
@@ -403,9 +367,6 @@ function changerMode(){
     localStorage.setItem("mode",mode);
 
 }
-const sauvegarde =
-    localStorage.getItem("langue");
-
 
 const modeSauvegarde =
     localStorage.getItem("mode");
