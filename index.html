@@ -100,6 +100,18 @@ window.onload = changerLangue;
 <option value="ca">🏴 Català</option>
 </select>
 
+ <select id="mode" onchange="changerMode()">
+
+<option value="apprentissage">
+📚 Mode Apprentissage
+</option>
+
+<option value="examen">
+🎓 Mode Examen
+</option>
+
+</select>
+
 <div style="
 display:flex;
 justify-content:space-between;
@@ -162,7 +174,9 @@ onchange="nouvelle()">
 <button onclick="nouvelle()">
 🔄 Nouvelle
 </button>
-
+<button onclick="toggleAide()">
+👁️ Aide
+</button>
 <div id="message"></div>
 <div id="score"></div>
 
@@ -414,9 +428,35 @@ if(modeSauvegarde){
     document.getElementById("mode").value =
         modeSauvegarde;
 }
+function toggleAide(){
 
+    const aide =
+        document.getElementById("zoneAide");
+
+    if(aide.style.display === "none"){
+
+        aide.style.display = "block";
+
+    }else{
+
+        aide.style.display = "none";
+
+    }
+
+}
 changerMode();
 lang();
+
+const modeSauvegarde =
+    localStorage.getItem("mode");
+
+if(modeSauvegarde){
+    document.getElementById("mode").value =
+        modeSauvegarde;
+}
+
+changerMode();
+
 nouvelle();
 
 </script>
