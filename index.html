@@ -83,7 +83,10 @@ font-weight:bold;
 </script>
 <body>
 
- <select id="mode" onchange="changerMode()">
+ <select
+id="mode"
+onchange="changerMode()"
+style="margin-bottom:10px">
 
 <option value="apprentissage">
 📚 Mode Apprentissage
@@ -149,9 +152,9 @@ onchange="nouvelle()">
 <input
 id="rep"
 type="number"
-placeholder="Exemple : 4700">
-style="width:180px">
- onkeydown="if(event.key==='Enter') verifier()">
+placeholder="Exemple : 4700"
+style="width:180px"
+onkeydown="if(event.key==='Enter') verifier()">
 <br>
 
 <button onclick="verifier()">
@@ -212,16 +215,16 @@ Tolérances avancées
 <script>
 
 const C=[
-["Noir","Negre","black",0],
-["Marron","Marró","#8B4513",1],
-["Rouge","Vermell","red",2],
-["Orange","Taronja","orange",3],
-["Jaune","Groc","yellow",4],
-["Vert","Verd","green",5],
-["Bleu","Blau","blue",6],
-["Violet","Violeta","violet",7],
-["Gris","Gris","gray",8],
-["Blanc","Blanc","white",9]
+["Noir","black",0],
+["Marron","#8B4513",1],
+["Rouge","red",2],
+["Orange","orange",3],
+["Jaune","yellow",4],
+["Vert","green",5],
+["Bleu","blue",6],
+["Violet","violet",7],
+["Gris","gray",8],
+["Blanc","white",9]
 ];
 
 let valeur=0;
@@ -239,10 +242,10 @@ function initialiser(){
 
         memo.innerHTML +=
         `<div class="memo"
-        style="background:${c[2]};
+        style="background:${c[1]};
         color:${c[0]=="Jaune" || c[0]=="Blanc" || c[0]=="Orange" ? "black" : "white"}">
 
-        ${c[0]} = ${c[3]}
+        ${c[0]} = ${c[2]}
 
         </div>`;
 
