@@ -95,11 +95,6 @@ window.onload = changerLangue;
 </script>
 <body>
 
-<select id="langue" onchange="changerLangue()">
-<option value="fr">🇫🇷 Français</option>
-<option value="ca">🏴 Català</option>
-</select>
-
  <select id="mode" onchange="changerMode()">
 
 <option value="apprentissage">
@@ -122,21 +117,21 @@ margin-bottom:10px;
 
 <div style="text-align:left">
 
-<h2 id="titre" style="margin:0"></h2>
+<h2 style="margin:0">
+📻 Deviens Radioamateur - Session 7
+</h2>
 
-<p id="sous"
-style="
+<p style="
 margin:2px 0;
 font-size:0.9rem;">
+Codes couleurs des résistances
 </p>
 
-</div>
-
-<p id="mention"
-style="
+<p style="
 font-size:0.8rem;
 color:#94a3b8;
 margin:0">
+Application d'entraînement non officielle
 </p>
 
 </div>
@@ -254,38 +249,33 @@ score:"Puntuació"
 }
 };
 
-let langue="fr";
+
 let valeur=0;
 let bons=0;
 let total=0;
 
-function lang(){
+function initialiser(){
 
-langue=
-document.getElementById("langue").value;
+    question.textContent =
+        "Valeur de la résistance ?";
 
-const L=T[langue];
+    memo.innerHTML = "";
 
-titre.textContent=L.titre;
-sous.textContent=L.sous;
-mention.textContent=L.mention;
-question.textContent=L.question;
+    C.forEach(c => {
 
-memo.innerHTML="";
+        memo.innerHTML +=
+        `<div class="memo"
+        style="background:${c[2]};
+        color:${c[0]=="Jaune" || c[0]=="Blanc" || c[0]=="Orange" ? "black" : "white"}">
 
-C.forEach(c=>{
+        ${c[0]} = ${c[3]}
 
-memo.innerHTML+=
-`<div class="memo"
-style="background:${c[2]};color:${c[0]=="Jaune"||c[0]=="Blanc"||c[0]=="Orange"?"black":"white"}">
-${langue=="fr"?c[0]:c[1]}
- = ${c[3]}
-</div>`;
+        </div>`;
 
-});
+    });
 
-majTol();
-localStorage.setItem("langue", langue);
+    majTol();
+
 }
 
 function majTol(){
@@ -389,12 +379,12 @@ message.textContent=
 "❌ "+format(valeur);
 }
 
-score.textContent=
-T[langue].score+
-" : "+
-bons+
-" / "+
+score.textContent =
+"Score : " +
+bons +
+" / " +
 total;
+``
 }
 function changerMode(){
 
@@ -417,10 +407,7 @@ function changerMode(){
 const sauvegarde =
     localStorage.getItem("langue");
 
-if(sauvegarde){
-    document.getElementById("langue").value =
-        sauvegarde;
-}
+
 const modeSauvegarde =
     localStorage.getItem("mode");
 
@@ -451,9 +438,13 @@ const modeSauvegarde =
     localStorage.getItem("mode");
 
 if(modeSauvegarde){
+
     document.getElementById("mode").value =
         modeSauvegarde;
+
 }
+
+initialiser();
 
 changerMode();
 
