@@ -9,3 +9,169 @@ display:inline-block;">
 🏠 Retour au menu
 </a>
 </div>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Mémorisation des couleurs</title>
+
+<style>
+
+body{
+    font-family:Arial,sans-serif;
+    background:#0f172a;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+h1{
+    color:#fbbf24;
+}
+
+.carte{
+    width:250px;
+    height:150px;
+    margin:20px auto;
+    border-radius:12px;
+    border:2px solid white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:2rem;
+    font-weight:bold;
+}
+
+input,
+select{
+    padding:10px;
+    font-size:1rem;
+    border-radius:8px;
+    margin:5px;
+}
+
+button{
+    padding:10px;
+    margin:5px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+#aide{
+    max-width:500px;
+    margin:15px auto;
+    background:#1e293b;
+    padding:15px;
+    border-radius:12px;
+    text-align:left;
+}
+
+#message{
+    margin-top:15px;
+    font-size:1.2rem;
+}
+
+#score{
+    margin-top:10px;
+    color:#4ade80;
+}
+
+#record{
+    margin-top:8px;
+    color:#fbbf24;
+}
+
+</style>
+</head>
+
+<body>
+
+<div style="text-align:left">
+
+<a href="index.html"
+style="
+background:#2563eb;
+color:white;
+padding:10px 15px;
+border-radius:8px;
+text-decoration:none;
+display:inline-block;
+">
+
+🏠 Retour au menu
+
+</a>
+
+</div>
+
+<h1>🎯 Mémorisation des couleurs</h1>
+
+<select id="modeQuestion" onchange="nouvelleQuestion()">
+
+<option value="valeur">
+🎨 Couleur → Valeur
+</option>
+
+<option value="multiplicateur">
+✖️ Couleur → Multiplicateur
+</option>
+
+</select>
+
+<select id="modeAide" onchange="changerAide()">
+
+<option value="avec">
+📚 Avec aide
+</option>
+
+<option value="sans">
+🎓 Sans aide
+</option>
+
+</select>
+
+<div id="aide">
+
+<h3>🎨 Couleurs → Chiffres</h3>
+
+⚫ Noir = 0<br>
+🟤 Marron = 1<br>
+🔴 Rouge = 2<br>
+🟠 Orange = 3<br>
+🟡 Jaune = 4<br>
+🟢 Vert = 5<br>
+🔵 Bleu = 6<br>
+🟣 Violet = 7<br>
+⚪ Gris = 8<br>
+🤍 Blanc = 9
+
+<hr>
+
+<h3>✖️ Couleurs → Multiplicateurs</h3>
+
+⚫ Noir = ×1<br>
+🟤 Marron = ×10<br>
+🔴 Rouge = ×100<br>
+🟠 Orange = ×1 000<br>
+🟡 Jaune = ×10 000<br>
+🟢 Vert = ×100 000<br>
+🔵 Bleu = ×1 M<br>
+🟣 Violet = ×10 M<br>
+⚪ Gris = ×100 M<br>
+🤍 Blanc = ×1 G
+
+</div>
+
+<div id="carte" class="carte"></div>
+
+<input
+id="reponse"
+type="text"
+placeholder="Réponse"
+onkeydown="if(event.key==='Enter') verifier()">
+
+<br>
+
+<button onclick="verifier
