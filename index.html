@@ -160,6 +160,21 @@ onkeydown="if(event.key==='Enter') verifier()">
 <button onclick="verifier()">
 ✅ Vérifier
 </button>
+ <br>
+
+<select
+id="mode"
+onchange="changerMode()">
+
+<option value="apprentissage">
+📚 Mode Apprentissage
+</option>
+
+<option value="examen">
+🎓 Mode Examen
+</option>
+
+</select>
 
 <button onclick="nouvelle()">
 🔄 Nouvelle
