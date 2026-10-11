@@ -52,13 +52,13 @@ Centre d'entraînement non officiel.
 
 <div class="menu">
 
-    <div class="carte">
-        <a href="memo-couleurs.html">
-            🎯 Mémorisation des couleurs
-        </a>
-        <br><br>
-        Couleurs, chiffres et multiplicateurs.
-    </div>
+  <div class="carte">
+    <a href="resistances.html">
+        📟 Lecture des résistances
+    </a>
+    <br><br>
+    4 bandes, 5 bandes, aide mémoire et mode examen.
+</div>
 
     <div class="carte">
         resistances.html
@@ -85,8 +85,6 @@ Centre d'entraînement non officiel.
         <br>
         (Bientôt)
     </div>
-
-</div>
 
 </div>
 
