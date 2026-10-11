@@ -385,7 +385,10 @@ function changerMode(){
 const modeSauvegarde =
     localStorage.getItem("mode");
 
-if(modeSauvegarde){
+if(
+    modeSauvegarde &&
+    document.getElementById("mode")
+){
     document.getElementById("mode").value =
         modeSauvegarde;
 }
@@ -405,7 +408,7 @@ function toggleAide(){
     }
 
 }
-
+console.log("Script lancé");
 initialiser();
 
 changerMode();
