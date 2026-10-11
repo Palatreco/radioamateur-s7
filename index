@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+
 <title>Deviens Radioamateur - Session 7</title>
 
 <style>
-
 
 body{
     font-family:Arial,sans-serif;
@@ -39,7 +39,12 @@ a{
     font-size:1.1em;
 }
 
+a:hover{
+    text-decoration:underline;
+}
+
 </style>
+
 </head>
 
 <body>
@@ -57,7 +62,7 @@ Centre d'entraînement non officiel.
             🎯 Mémorisation des couleurs
         </a>
         <br><br>
-        Couleurs, chiffres et multiplicateurs.
+        Apprendre les correspondances couleurs, chiffres et multiplicateurs.
     </div>
 
     <div class="carte">
@@ -65,7 +70,9 @@ Centre d'entraînement non officiel.
             📟 Lecture des résistances
         </a>
         <br><br>
-        4 bandes, 5 bandes, aide mémoire et mode examen.
+        Décodage des résistances 4 bandes et 5 bandes.
+        <br>
+        Mode apprentissage et mode examen.
     </div>
 
     <div class="carte">
@@ -81,7 +88,7 @@ Centre d'entraînement non officiel.
     </div>
 
     <div class="carte">
-        🚧 Examen blanc
+        🚧 Examen blanc ANFR
         <br>
         (Bientôt)
     </div>
