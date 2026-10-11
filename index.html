@@ -127,7 +127,7 @@ Application d'entraînement non officielle
 <label>
 <input type="checkbox" id="mode5"
 onchange="nouvelle()">
-5 bandes
+📻 Mode 5 bandes
 </label>
 
 <div class="container">
@@ -150,7 +150,8 @@ onchange="nouvelle()">
 id="rep"
 type="number"
 placeholder="Exemple : 4700">
-
+style="width:180px">
+ onkeydown="if(event.key==='Enter') verifier()">
 <br>
 
 <button onclick="verifier()">
