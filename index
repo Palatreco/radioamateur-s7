@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Deviens Radioamateur - Session 7</title>
+
+<style>
+
+body{
+    font-family:Arial,sans-serif;
+    background:#0f172a;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+h1{
+    color:#fbbf24;
+}
+
+.menu{
+    max-width:700px;
+    margin:auto;
+}
+
+.carte{
+    background:#1e293b;
+    padding:20px;
+    margin:15px 0;
+    border-radius:12px;
+}
+
+a{
+    color:#60a5fa;
+    text-decoration:none;
+    font-weight:bold;
+    font-size:1.1em;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>📻 Deviens Radioamateur - Session 7</h1>
+
+<p>
+Centre d'entraînement non officiel.
+</p>
+
+<div class="menu">
+
+<div class="carte">
+memo-couleurs.html
+🎯 Mémorisation des couleurs
+</a>
+<br>
+Couleurs, chiffres et multiplicateurs.
+</div>
+
+<div class="carte">
+<a href="resistances.htmlre des résistances
+</a>
+<br>
+4 bandes, 5 bandes, aide mémoire et mode examen.
+</div>
+
+<div class="carte">
+🚧 Conversion Ω / kΩ / MΩ
+<br>
+(Bientôt)
+</div>
+
+<div class="carte">
+🚧 Loi d'Ohm
+<br>
+(Bientôt)
+</div>
+
+<div class="carte">
+🚧 Examen blanc
+<br>
+(Bientôt)
+</div>
+
+</div>
+
+</body>
+</html>
