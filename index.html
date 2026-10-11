@@ -168,6 +168,67 @@ onkeydown="if(event.key==='Enter') verifier()">
 
 </select>
 
+<div id="cours"
+style="
+margin-top:10px;
+background:#1e293b;
+padding:12px;
+border-radius:12px;
+text-align:left;
+font-size:0.9em;
+">
+
+<h3>📖 Rappel du cours</h3>
+
+<b>Résistance 4 bandes</b><br><br>
+
+1️⃣ Première bande : premier chiffre<br>
+2️⃣ Deuxième bande : deuxième chiffre<br>
+3️⃣ Troisième bande : multiplicateur<br>
+4️⃣ Quatrième bande : tolérance
+
+<br><br>
+
+Exemple :<br>
+
+🟡 Jaune - 🟣 Violet - 🔴 Rouge - 🟨 Or
+
+<br>
+
+47 × 100 = 4700 Ω ±5%
+
+<br><br>
+
+<b>Résistance 5 bandes</b><br><br>
+
+1️⃣ Première bande : premier chiffre<br>
+2️⃣ Deuxième bande : deuxième chiffre<br>
+3️⃣ Troisième bande : troisième chiffre<br>
+4️⃣ Quatrième bande : multiplicateur<br>
+5️⃣ Cinquième bande : tolérance
+
+<br><br>
+
+Exemple :<br>
+
+🟤 Marron - ⚫ Noir - ⚫ Noir - 🔴 Rouge - 🟨 Or
+
+<br>
+
+100 × 100 = 10 000 Ω ±5%
+
+<br><br>
+
+<b>🧠 Phrase mnémotechnique</b>
+
+<br><br>
+
+<b>
+Ne Mange Rien Ou Jaune Vert Bleu Violet Gris Blanc
+</b>
+
+</div>
+
 <div id="message"></div>
 <div id="score"></div>
 
@@ -184,18 +245,67 @@ onkeydown="if(event.key==='Enter') verifier()">
 <h4>Multiplicateurs</h4>
 
 <div>
-×1 Noir<br>
-×10 Marron<br>
-×100 Rouge<br>
-×1k Orange<br>
-×10k Jaune<br>
-×100k Vert<br>
-×1M Bleu<br>
-×10M Violet<br>
-×100M Gris<br>
-×1G Blanc<br>
-×0.1 Or<br>
-×0.01 Argent
+
+×1 <span style="color:black;background:white;padding:2px 4px;border-radius:4px;">
+Noir
+</span><br>
+
+×10 <span style="color:#8B4513;">
+Marron
+</span><br>
+
+×100 <span style="color:red;">
+Rouge
+</span><br>
+
+×1k <span style="color:orange;">
+Orange
+</span><br>
+
+×10k
+<span style="
+color:black;
+background:yellow;
+padding:2px 4px;
+border-radius:4px;">
+Jaune
+</span>
+<br>
+
+×100k <span style="color:lime;">
+Vert
+</span><br>
+
+×1M <span style="color:dodgerblue;">
+Bleu
+</span><br>
+
+×10M <span style="color:violet;">
+Violet
+</span><br>
+
+×100M <span style="color:silver;">
+Gris
+</span><br>
+
+×1G
+<span style="
+color:black;
+background:white;
+padding:2px 4px;
+border-radius:4px;">
+Blanc
+</span>
+<br>
+
+×0.1 <span style="color:gold;">
+Or
+</span><br>
+
+×0.01 <span style="color:silver;">
+Argent
+</span>
+
 </div>
 
 <hr>
@@ -370,13 +480,21 @@ function changerMode(){
 
     const aide =
         document.getElementById("zoneAide");
+ const cours =
+    document.getElementById("cours");
 
-    if(mode === "examen"){
-        aide.style.display = "none";
-    }
-    else{
-        aide.style.display = "block";
-    }
+if(mode === "examen"){
+
+    aide.style.display = "none";
+    cours.style.display = "none";
+
+}
+else{
+
+    aide.style.display = "block";
+    cours.style.display = "block";
+
+}
 
     localStorage.setItem("mode",mode);
 
