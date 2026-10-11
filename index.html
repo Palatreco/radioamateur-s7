@@ -147,16 +147,34 @@ onkeydown="if(event.key==='Enter') verifier()">
 </button>
  <br>
 
-
-
-</select>
-
 <button onclick="nouvelle()">
 🔄 Nouvelle
 </button>
 <button onclick="toggleAide()">
 👁️ Aide
 </button>
+
+<br>
+
+<select id="mode" onchange="changerMode()">
+
+<option value="apprentissage">
+📚 Mode Apprentissage
+</option>
+
+<option value="examen">
+🎓 Mode Examen
+</option>
+
+</select>
+
+<div id="message"></div>
+<div id="score"></div>
+
+
+
+
+ 
 <div id="message"></div>
 <div id="score"></div>
 
