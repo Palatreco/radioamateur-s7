@@ -384,7 +384,6 @@ score.textContent =
 bons +
 " / " +
 total;
-``
 }
 function changerMode(){
 
@@ -432,17 +431,6 @@ function toggleAide(){
 
 }
 changerMode();
-lang();
-
-const modeSauvegarde =
-    localStorage.getItem("mode");
-
-if(modeSauvegarde){
-
-    document.getElementById("mode").value =
-        modeSauvegarde;
-
-}
 
 initialiser();
 
