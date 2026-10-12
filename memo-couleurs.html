@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Mémorisation des couleurs</title>
 
@@ -36,9 +36,9 @@ h1{
 input,
 select{
     padding:10px;
-    font-size:1rem;
-    border-radius:8px;
     margin:5px;
+    border-radius:8px;
+    font-size:1rem;
 }
 
 button{
@@ -58,8 +58,8 @@ button{
 }
 
 #message{
-    margin-top:15px;
     font-size:1.2rem;
+    margin-top:15px;
 }
 
 #score{
@@ -68,7 +68,7 @@ button{
 }
 
 #record{
-    margin-top:8px;
+    margin-top:10px;
     color:#fbbf24;
 }
 
@@ -138,4 +138,191 @@ display:inline-block;
 
 <hr>
 
-<h3>✖️ Couleurs → Multiplicateurs
+<h3>✖️ Couleurs → Multiplicateurs</h3>
+
+⚫ Noir = ×1<br>
+🟤 Marron = ×10<br>
+🔴 Rouge = ×100<br>
+🟠 Orange = ×1000<br>
+🟡 Jaune = ×10000<br>
+🟢 Vert = ×100000<br>
+🔵 Bleu = ×1M<br>
+🟣 Violet = ×10M<br>
+⚪ Gris = ×100M<br>
+🤍 Blanc = ×1G
+
+</div>
+
+<div id="carte" class="carte"></div>
+
+<input
+id="reponse"
+type="text"
+placeholder="Réponse"
+onkeydown="if(event.key==='Enter') verifier()">
+
+<br>
+
+<button onclick="verifier()">
+✅ Vérifier
+</button>
+
+<button onclick="nouvelleQuestion()">
+🔄 Suivant
+</button>
+
+<div id="message"></div>
+
+<div id="score">
+Score : 0 / 0
+</div>
+
+<div id="record">
+🏆 Record : 0
+</div>
+
+<script>
+
+const couleurs = [
+
+["Noir","black","0","1"],
+["Marron","#8B4513","1","10"],
+["Rouge","red","2","100"],
+["Orange","orange","3","1000"],
+["Jaune","yellow","4","10000"],
+["Vert","green","5","100000"],
+["Bleu","blue","6","1000000"],
+["Violet","violet","7","10000000"],
+["Gris","gray","8","100000000"],
+["Blanc","white","9","1000000000"]
+
+];
+
+let courant;
+let bonnes = 0;
+let total = 0;
+
+let record =
+parseInt(
+localStorage.getItem("recordCouleurs")
+) || 0;
+
+document.getElementById("record").innerHTML =
+"🏆 Record : " + record;
+
+function changerAide(){
+
+    const mode =
+    document.getElementById("modeAide").value;
+
+    document.getElementById("aide").style.display =
+    mode === "avec"
+    ? "block"
+    : "none";
+}
+
+function nouvelleQuestion(){
+
+    const carte =
+    document.getElementById("carte");
+
+    courant =
+    couleurs[
+        Math.floor(
+            Math.random() *
+            couleurs.length
+        )
+    ];
+
+    carte.style.background =
+    courant[1];
+
+    carte.style.color =
+    (
+        courant[0] === "Jaune" ||
+        courant[0] === "Blanc"
+    )
+    ? "black"
+    : "white";
+
+    carte.textContent =
+    courant[0];
+
+    document.getElementById("reponse").value = "";
+    document.getElementById("message").innerHTML = "";
+}
+
+function verifier(){
+
+    const rep =
+    document.getElementById("reponse")
+    .value
+    .trim();
+
+    const mode =
+    document.getElementById("modeQuestion")
+    .value;
+
+    let attendu = "";
+
+    if(mode === "valeur"){
+        attendu = courant[2];
+    }
+    else{
+        attendu = courant[3];
+    }
+
+    total++;
+
+    if(rep === attendu){
+
+        bonnes++;
+
+        document.getElementById("message")
+        .style.color = "lime";
+
+        document.getElementById("message")
+        .innerHTML = "✅ Correct";
+
+    }
+    else{
+
+        document.getElementById("message")
+        .style.color = "#ff6b6b";
+
+        document.getElementById("message")
+        .innerHTML =
+        "❌ Réponse : " +
+        attendu;
+    }
+
+    if(bonnes > record){
+
+        record = bonnes;
+
+        localStorage.setItem(
+            "recordCouleurs",
+            record
+        );
+
+        document.getElementById("record")
+        .innerHTML =
+        "🏆 Record : " +
+        record;
+    }
+
+    document.getElementById("score")
+    .innerHTML =
+    "Score : " +
+    bonnes +
+    " / " +
+    total;
+}
+
+changerAide();
+nouvelleQuestion();
+
+</script>
+
+</body>
+</html>
